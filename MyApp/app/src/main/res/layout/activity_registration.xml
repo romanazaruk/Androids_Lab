@@ -4,29 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background"
-    tools:context=".activity_registration"
-    android:noHistory="true">
-
-
-
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="114dp"
-        android:layout_marginLeft="114dp"
-        android:layout_marginTop="45dp"
-        android:layout_marginEnd="115dp"
-        android:layout_marginRight="115dp"
-        android:layout_marginBottom="23dp"
-        android:text="@string/sign_up"
-        android:textColor="#2c393c"
-        android:textSize="55sp"
-        app:layout_constraintBottom_toTopOf="@+id/name"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    android:noHistory="true"
+    tools:context=".Registration_activity">
 
 
     <EditText
@@ -43,7 +22,7 @@
         android:hint="@string/enter_your_email"
         android:importantForAutofill="no"
         android:inputType="textEmailAddress"
-        android:textColorHint="#2c393c"
+        android:textColorHint="#000000"
         android:textSize="22sp"
         app:layout_constraintBottom_toTopOf="@+id/pass"
         app:layout_constraintEnd_toEndOf="parent"
@@ -64,15 +43,15 @@
         android:hint="@string/enter_your_password"
         android:importantForAutofill="no"
         android:inputType="textPassword"
-        android:textColorHint="#2c393c"
+        android:textColorHint="#000000"
         android:textSize="22sp"
-        app:layout_constraintBottom_toTopOf="@+id/button2"
+        app:layout_constraintBottom_toTopOf="@+id/singUpButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/email" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/singUpButton"
         android:layout_width="120dp"
         android:layout_height="44dp"
         android:layout_marginStart="140dp"
@@ -84,16 +63,32 @@
         android:background="@color/enterButton"
         android:text="@string/sign_up"
         android:textSize="22sp"
-        app:layout_constraintBottom_toTopOf="@+id/textView2"
+        app:layout_constraintBottom_toTopOf="@+id/swapToLoginPage"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.454"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/pass" />
 
-
+    <TextView
+        android:id="@+id/singUpText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="114dp"
+        android:layout_marginLeft="114dp"
+        android:layout_marginTop="45dp"
+        android:layout_marginEnd="115dp"
+        android:layout_marginRight="115dp"
+        android:layout_marginBottom="23dp"
+        android:text="@string/sign_up"
+        android:textColor="#000000"
+        android:textSize="55sp"
+        app:layout_constraintBottom_toTopOf="@+id/name"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/swapToLoginPage"
         android:layout_width="wrap_content"
         android:layout_height="27dp"
         android:layout_marginStart="45dp"
@@ -108,7 +103,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button2" />
+        app:layout_constraintTop_toBottomOf="@+id/singUpButton" />
 
     <EditText
         android:id="@+id/phone"
@@ -122,8 +117,8 @@
         android:layout_marginBottom="10dp"
         android:ems="10"
         android:hint="Enter your phone number"
-        android:textColorHint="#2c393c"
         android:inputType="phone"
+        android:textColorHint="#000000"
         android:textSize="22sp"
         app:layout_constraintBottom_toTopOf="@+id/email"
         app:layout_constraintEnd_toEndOf="parent"
@@ -142,11 +137,12 @@
         android:layout_marginBottom="10dp"
         android:ems="10"
         android:hint="Enter your name"
-        android:textColorHint="#2c393c"
         android:inputType="textPersonName"
+        android:textColorHint="#000000"
         android:textSize="22sp"
         app:layout_constraintBottom_toTopOf="@+id/phone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toBottomOf="@+id/singUpText" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -3,9 +3,15 @@
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
-    <color name="background">#ffffff</color>
-    <color name="enterButton">#78859b</color>
-    <color name="welcomeBackground">#ffffff</color>
+    <color name="background">#03A9F4</color>
+    <color name="enterButton">#19CA29</color>
+    <color name="welcomeBackground">#22C90A</color>
     <color name="logoutButton">#F44336</color>
+    <color name="carModel">#085009</color>
+    <color name="black">#000</color>
+    <color name="reiting">#FF9800</color>
+    <color name="status">#AD2319</color>
+    <color name="space">#575454</color>
+    <color name="cardBack">#FAC153</color>
 
 </resources>

@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background"
-    tools:context=".MainActivity"
+    tools:context=".Login_activity"
     android:noHistory="true">
 
 
@@ -23,7 +22,7 @@
         android:hint="@string/enter_your_email"
         android:importantForAutofill="no"
         android:inputType="textEmailAddress"
-        android:textColorHint="#2c393c"
+        android:textColorHint="#000000"
         android:textSize="22sp"
         app:layout_constraintBottom_toTopOf="@+id/loginPass"
         app:layout_constraintEnd_toEndOf="parent"
@@ -44,7 +43,7 @@
         android:hint="@string/enter_your_password"
         android:importantForAutofill="no"
         android:inputType="textPassword"
-        android:textColorHint="#2c393c"
+        android:textColorHint="#000000"
         android:textSize="22sp"
         app:layout_constraintBottom_toTopOf="@+id/singInButton"
         app:layout_constraintEnd_toEndOf="parent"
@@ -81,7 +80,7 @@
         android:layout_marginRight="123dp"
         android:layout_marginBottom="30dp"
         android:text="@string/sign_in"
-        android:textColor="#2c393c"
+        android:textColor="#000000"
         android:textSize="55sp"
         app:layout_constraintBottom_toTopOf="@+id/loginEmail"
         app:layout_constraintEnd_toEndOf="parent"
@@ -105,5 +104,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/singInButton" />
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
