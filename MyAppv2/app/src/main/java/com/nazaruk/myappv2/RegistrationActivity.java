@@ -22,7 +22,7 @@ import com.google.firebase.auth.UserProfileChangeRequest;
 import static android.widget.Toast.LENGTH_LONG;
 import static android.widget.Toast.LENGTH_SHORT;
 
-public class Registration_activity extends AppCompatActivity {
+public class RegistrationActivity extends AppCompatActivity {
 
     private EditText name;
     private EditText phone;
@@ -55,7 +55,7 @@ public class Registration_activity extends AppCompatActivity {
         moveToSingIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(Registration_activity.this, Login_activity.class);
+                Intent i = new Intent(RegistrationActivity.this, LoginActivity.class);
                 i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(i);
             }
@@ -72,7 +72,7 @@ public class Registration_activity extends AppCompatActivity {
                 @Override
                 public void onComplete(@NonNull Task<Void> task) {
                     if (task.isSuccessful()) {
-                        startActivity(new Intent(Registration_activity.this,
+                        startActivity(new Intent(RegistrationActivity.this,
                                 FilmListActivity.class));
                     }
                 }
@@ -89,12 +89,12 @@ public class Registration_activity extends AppCompatActivity {
 
     private void createUser(String em, String ps, final String nm) {
         firebaseAuth.createUserWithEmailAndPassword(em, ps)
-                .addOnCompleteListener(Registration_activity.this,
+                .addOnCompleteListener(RegistrationActivity.this,
                         new OnCompleteListener<AuthResult>() {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 if (!task.isSuccessful()) {
-                                    Toast.makeText(Registration_activity.this,
+                                    Toast.makeText(RegistrationActivity.this,
                                             R.string.emailAlreeadyExist,
                                             LENGTH_LONG).show();
                                 } else {
@@ -123,18 +123,18 @@ public class Registration_activity extends AppCompatActivity {
             password.setError("Please enter password!");
             password.requestFocus();
         } else if (!pn.matches(PHONE_PATTERN)) {
-            Toast.makeText(Registration_activity.this, R.string.correctPhone,
+            Toast.makeText(RegistrationActivity.this, R.string.correctPhone,
                     LENGTH_SHORT).show();
         } else if (!em.matches(EMAIL_PATTERN)) {
-            Toast.makeText(Registration_activity.this, R.string.invalidEmail,
+            Toast.makeText(RegistrationActivity.this, R.string.invalidEmail,
                     LENGTH_SHORT).show();
         } else if (!ps.matches(PASSWORD_PATTERN)) {
-            Toast.makeText(Registration_activity.this, R.string.correctPassword,
+            Toast.makeText(RegistrationActivity.this, R.string.correctPassword,
                     LENGTH_SHORT).show();
         } else if (!(em.isEmpty() && ps.isEmpty())) {
             createUser(em, ps, nm);
         } else {
-            Toast.makeText(Registration_activity.this, R.string.somethingGoneWrong,
+            Toast.makeText(RegistrationActivity.this, R.string.somethingGoneWrong,
                     LENGTH_SHORT).show();
         }
     }

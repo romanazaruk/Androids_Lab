@@ -16,8 +16,8 @@
             android:name=".ApplicationStaff"
             tools:ignore="GoogleAppIndexingWarning">
             <activity android:name=".FilmListActivity"></activity>
-            <activity android:name=".Login_activity" />
-            <activity android:name=".Registration_activity">
+            <activity android:name=".LoginActivity" />
+            <activity android:name=".RegistrationActivity">
                 <intent-filter>
                     <action android:name="android.intent.action.MAIN" />
 

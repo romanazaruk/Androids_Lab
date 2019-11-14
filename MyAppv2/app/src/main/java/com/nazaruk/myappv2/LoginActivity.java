@@ -19,7 +19,7 @@ import com.google.firebase.auth.FirebaseUser;
 
 import static android.widget.Toast.LENGTH_SHORT;
 
-public class Login_activity extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity {
     private EditText email;
     private EditText password;
     private Button buttonToSingIN;
@@ -39,15 +39,15 @@ public class Login_activity extends AppCompatActivity {
         authStateListener = new FirebaseAuth.AuthStateListener() {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
-                FirebaseUser firebaseUser = Login_activity.this.firebaseAuth.getCurrentUser();
+                FirebaseUser firebaseUser = LoginActivity.this.firebaseAuth.getCurrentUser();
                 if (firebaseUser != null) {
-                    Toast.makeText(Login_activity.this,
+                    Toast.makeText(LoginActivity.this,
                             R.string.loginSucceful, LENGTH_SHORT).show();
-                    Intent i = new Intent(Login_activity.this,
+                    Intent i = new Intent(LoginActivity.this,
                             FilmListActivity.class);
                     startActivity(i);
                 } else {
-                    Toast.makeText(Login_activity.this,
+                    Toast.makeText(LoginActivity.this,
                             R.string.pleaseLogin, LENGTH_SHORT).show();
                 }
             }
@@ -61,7 +61,7 @@ public class Login_activity extends AppCompatActivity {
         moveToSingUP.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(Login_activity.this, Registration_activity.class);
+                Intent i = new Intent(LoginActivity.this, RegistrationActivity.class);
                 i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(i);
             }
@@ -78,7 +78,7 @@ public class Login_activity extends AppCompatActivity {
             password.setError("Please enter password!");
             password.requestFocus();
         } else if (ps.isEmpty() && em.isEmpty()) {
-            Toast.makeText(Login_activity.this, R.string.emptyFields,
+            Toast.makeText(LoginActivity.this, R.string.emptyFields,
                     LENGTH_SHORT).show();
         } else if (!(ps.isEmpty() && em.isEmpty())) {
             login(em, ps);
@@ -87,16 +87,16 @@ public class Login_activity extends AppCompatActivity {
 
     private void login(String em, String ps) {
         firebaseAuth.signInWithEmailAndPassword(em, ps)
-                .addOnCompleteListener(Login_activity.this,
+                .addOnCompleteListener(LoginActivity.this,
                         new OnCompleteListener<AuthResult>() {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 if (!task.isSuccessful()) {
-                                    Toast.makeText(Login_activity.this,
+                                    Toast.makeText(LoginActivity.this,
                                             R.string.incorrectData,
                                             LENGTH_SHORT).show();
                                 } else {
-                                    startActivity(new Intent(Login_activity.this,
+                                    startActivity(new Intent(LoginActivity.this,
                                             FilmListActivity.class));
                                 }
 
@@ -112,7 +112,7 @@ public class Login_activity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        Intent i = new Intent(Login_activity.this, Registration_activity.class);
+        Intent i = new Intent(LoginActivity.this, RegistrationActivity.class);
         startActivity(i);
     }
 }

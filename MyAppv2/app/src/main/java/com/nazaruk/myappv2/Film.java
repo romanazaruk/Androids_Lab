@@ -5,13 +5,13 @@ import android.net.Uri;
 //import com.google.gson.annotations.SerializedName;
 
 public class Film {
-    private String name;
-    private String author;
-    private String year;
-    private String description;
-    private String photo;
+    final private String name;
+    final private String author;
+    final private String year;
+    final private String description;
+    final private String photo;
 
-    public Film(String name, String author, String year,String description, String photo) {
+    public Film(final  String name,final  String author,final  String year, final String description,final  String photo) {
         this.name = name;
         this.author = author;
         this.year = year;

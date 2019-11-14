@@ -11,7 +11,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.squareup.picasso.Picasso;
-
 import java.util.List;
 
 public class RvAdapter extends RecyclerView.Adapter<RvAdapter.FilmViewHolder> {
