@@ -1,5 +1,7 @@
 package com.nazaruk.myappv2;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,11 +15,13 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import com.squareup.picasso.Picasso;
 import java.util.List;
 
-public class RvAdapter extends RecyclerView.Adapter<RvAdapter.FilmViewHolder> {
+public class MoviesListAdapter extends RecyclerView.Adapter<MoviesListAdapter.FilmViewHolder> {
     private List<Film> films;
+    private Activity activity;
 
-    public RvAdapter(List<Film> films) {
+    public MoviesListAdapter(List<Film> films, Activity activity) {
         this.films = films;
+        this.activity = activity;
     }
 
     @Override
@@ -27,14 +31,29 @@ public class RvAdapter extends RecyclerView.Adapter<RvAdapter.FilmViewHolder> {
         FilmViewHolder filmViewHolder = new FilmViewHolder(v);
         return filmViewHolder;
     }
-
+//
     @Override
     public void onBindViewHolder(final FilmViewHolder filmViewHolder, final int i) {
-        Picasso.get().load(films.get(i).getPhoto()).into(filmViewHolder.avatar);
-        filmViewHolder.filmName.setText(films.get(i).getName());
-        filmViewHolder.author.setText(films.get(i).getAuthor());
-        filmViewHolder.year.setText(films.get(i).getYear());
-        filmViewHolder.description.setText(films.get(i).getDescription());
+        final Film currentMovie = films.get(i);
+
+        Picasso.get().load(currentMovie.getPhotoUrl()).into(filmViewHolder.avatar);
+        filmViewHolder.filmName.setText(currentMovie.getName());
+        filmViewHolder.author.setText(currentMovie.getAuthor());
+        filmViewHolder.year.setText(currentMovie.getYear());
+        filmViewHolder.description.setText(currentMovie.getDescription());
+
+        filmViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(activity, DetailsActivity.class);
+                intent.putExtra(Constants.MOVIE_NAME.getValue(), currentMovie.getName());
+                intent.putExtra(Constants.MOVIE_AUTHOR.getValue(), currentMovie.getAuthor());
+                intent.putExtra(Constants.MOVIE_DESCRIPTION.getValue(), currentMovie.getDescription());
+                intent.putExtra(Constants.MOVIE_PHOTO_URL.getValue(), currentMovie.getPhotoUrl());
+                intent.putExtra(Constants.MOVIE_YEAR.getValue(), currentMovie.getYear());
+                activity.startActivity(intent);
+            }
+        });
     }
 
     @Override
