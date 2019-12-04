@@ -35,7 +35,7 @@ public class Film {
         return description;
     }
 
-    public Uri getPhoto() {
-        return Uri.parse(photo);
+    public String getPhotoUrl() {
+        return photo;
     }
 }

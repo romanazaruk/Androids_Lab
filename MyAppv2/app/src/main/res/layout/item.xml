@@ -44,7 +44,6 @@
             android:textColor="@color/reiting"
             android:layout_toRightOf="@+id/avatar"
             android:textSize="15sp"/>
-        <!--            android:layout_toRightOf="@+id/driver_name"-->
 
         <TextView
             android:layout_width="wrap_content"

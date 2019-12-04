@@ -7,7 +7,7 @@
     <string name="here2"><u>Haven`t account? Sing up here!</u></string>
     <string name="sign_in">Login</string>
     <string name="cong">Congratulations</string>
-    <string name="logout">Logout!</string>
+    <string name="logout">Вийти</string>
     <string name="welcome">Welcome</string>
     <string name="somethingGoneWrong">Something gone wrong</string>
     <string name="emailAlreeadyExist">Sorry but such email already used!</string>
@@ -21,5 +21,24 @@
     <string name="incorrectData">Email Or Password Incorrect! Please Try Again</string>
     <string name="conError">Internet connection losed!</string>
     <string name="close">Close</string>
+    <string name="error_message">Error</string>
+    <string name="image_uploaded_message">User photo uploaded!</string>
+    <string name="username_updated_message">Username is updated!</string>
+    <string name="email_updated_message">Email is updated!</string>
+    <string name="enter_valid_email_error">Enter valid email</string>
+    <string name="enter_username_error">Enter username</string>
 
+    <!-- Tabs titles -->
+    <string name="movies">Movies</string>
+    <string name="secondTab">Tab #2</string>
+    <string name="myProfile">My profile</string>
+
+
+    <!-- Update profile -->
+    <string name="updatePhoto">Update photo</string>
+    <string name="updateUsername">Update username</string>
+    <string name="updateEmail">Update email</string>
+    <string name="photo">user photo</string>
+    <string name="email">email</string>
+    <string name="username">username</string>
 </resources>
