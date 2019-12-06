@@ -3,6 +3,7 @@ package com.nazaruk.myappv2;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -31,6 +32,7 @@ public class RegistrationActivity extends AppCompatActivity {
     private Button buttonToSingUp;
     private TextView moveToSingIn;
     private FirebaseAuth firebaseAuth;
+    private FirebaseAuth.AuthStateListener authStateListener;
     static final String EMAIL_PATTERN = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
     static final String PASSWORD_PATTERN = ".{8,}";
     static final String PHONE_PATTERN = "[+]380[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]";
@@ -52,6 +54,19 @@ public class RegistrationActivity extends AppCompatActivity {
                 buttonToSingUp();
             }
         });
+
+        authStateListener = new FirebaseAuth.AuthStateListener() {
+            @Override
+            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+                FirebaseUser firebaseUser = RegistrationActivity.this.firebaseAuth.getCurrentUser();
+                if (firebaseUser != null) {
+                    startActivity(new Intent(RegistrationActivity.this, MainActivity.class));
+                }else {
+                    Log.d("My_tag", "firebaseUser == null");
+                }
+            }
+        };
+
         moveToSingIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -60,7 +75,6 @@ public class RegistrationActivity extends AppCompatActivity {
                 startActivity(i);
             }
         });
-
     }
 
     private void addUserName(String nm) {
@@ -73,7 +87,7 @@ public class RegistrationActivity extends AppCompatActivity {
                 public void onComplete(@NonNull Task<Void> task) {
                     if (task.isSuccessful()) {
                         startActivity(new Intent(RegistrationActivity.this,
-                                FilmListActivity.class));
+                                MainActivity.class));
                     }
                 }
             });
@@ -137,5 +151,11 @@ public class RegistrationActivity extends AppCompatActivity {
             Toast.makeText(RegistrationActivity.this, R.string.somethingGoneWrong,
                     LENGTH_SHORT).show();
         }
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        firebaseAuth.addAuthStateListener(authStateListener);
     }
 }
