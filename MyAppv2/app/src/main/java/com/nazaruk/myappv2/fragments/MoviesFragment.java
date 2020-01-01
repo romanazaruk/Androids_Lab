@@ -2,6 +2,7 @@ package com.nazaruk.myappv2.fragments;
 
 import android.content.IntentFilter;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -61,6 +62,7 @@ public class MoviesFragment extends Fragment {
     private void loadData() {
         final DataApi api = getApplicationEx().getApi();
         final Call<List<Film>> call = api.getFilm();
+        Log.d("My_tag", api.getFilm().toString());
         call.enqueue(new Callback<List<Film>>() {
             @Override
             public void onResponse(Call<List<Film>> call,
