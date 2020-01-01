@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.nazaruk.myappv2">
@@ -18,8 +17,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".MainActivity"/>
-        <activity android:name=".DetailsActivity"/>
+        <activity android:name=".AddingFilmActivity"></activity>
+        <activity android:name=".MainActivity" />
+        <activity android:name=".DetailsActivity" />
         <activity android:name=".LoginActivity" />
         <activity android:name=".RegistrationActivity">
             <intent-filter>
@@ -40,7 +40,6 @@
         <meta-data
             android:name="com.google.firebase.messaging.default_notification_icon"
             android:resource="@drawable/ic_notifications_24dp" />
-
         <meta-data
             android:name="com.google.firebase.messaging.default_notification_color"
             android:resource="@color/colorAccent" />

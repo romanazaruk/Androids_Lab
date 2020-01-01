@@ -9,14 +9,13 @@ public class Film {
     final private String author;
     final private String year;
     final private String description;
-    final private String photo;
+    final private String photo = "";
 
-    public Film(final  String name,final  String author,final  String year, final String description,final  String photo) {
+    public Film(final  String name,final  String author,final  String year, final String description) {
         this.name = name;
         this.author = author;
         this.year = year;
         this.description = description;
-        this.photo = photo;
     }
 
     public String getName() {

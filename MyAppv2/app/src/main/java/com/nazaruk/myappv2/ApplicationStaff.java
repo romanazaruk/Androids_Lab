@@ -19,7 +19,7 @@ public class ApplicationStaff extends Application {
 
     public DataApi createApi() {
         final Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("https://us-central1-android-b9125.cloudfunctions.net/")
+                .baseUrl("https://rnazaruk-backend.appspot.com/")
                 .addConverterFactory(GsonConverterFactory.create()).build();
         return retrofit.create(DataApi.class);
     }
