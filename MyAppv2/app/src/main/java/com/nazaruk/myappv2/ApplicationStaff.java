@@ -7,6 +7,8 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ApplicationStaff extends Application {
     private DataApi api;
+    public static String URL = "https://rnazaruk-backend.appspot.com/";
+
 
     public void onCreate() {
         super.onCreate();
@@ -19,7 +21,7 @@ public class ApplicationStaff extends Application {
 
     public DataApi createApi() {
         final Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("https://rnazaruk-backend.appspot.com/")
+                .baseUrl(URL)
                 .addConverterFactory(GsonConverterFactory.create()).build();
         return retrofit.create(DataApi.class);
     }

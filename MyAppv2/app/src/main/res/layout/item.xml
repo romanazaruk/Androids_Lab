@@ -24,7 +24,7 @@
             android:textColor="@color/black"
             android:layout_toRightOf="@+id/avatar"
             android:layout_marginRight="5dp"
-            android:textSize="30sp" />
+            android:textSize="25sp" />
 
         <TextView
             android:id="@+id/film_author"

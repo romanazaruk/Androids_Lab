@@ -33,9 +33,9 @@ import retrofit2.Response;
 
 public class MoviesFragment extends Fragment {
 
-    private SwipeRefreshLayout refreshLayout;
+    private SwipeRefreshLayout mRefreshLayout;
     private RecyclerView recyclerView;
-    private RelativeLayout relativeLayout;
+    private RelativeLayout mRelativeLayout;
     private MoviesListAdapter mAdapter;
     private NetworkCheck mNetworkCheck;
 
@@ -43,9 +43,9 @@ public class MoviesFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.movies_fragment, container, false);
 
-        refreshLayout = view.findViewById(R.id.swipe);
+        mRefreshLayout = view.findViewById(R.id.swipe);
         recyclerView = view.findViewById(R.id.r_view);
-        relativeLayout = view.findViewById(R.id.main_data);
+        mRelativeLayout = view.findViewById(R.id.main_data);
         LinearLayoutManager llm = new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(llm);
         recyclerView.setHasFixedSize(true);
@@ -73,7 +73,7 @@ public class MoviesFragment extends Fragment {
 
     private void checkInternet() {
         IntentFilter filter = new IntentFilter("android.net.conn.CONNECTIVITY_CHANGE");
-        mNetworkCheck = new NetworkCheck(relativeLayout);
+        mNetworkCheck = new NetworkCheck(mRelativeLayout);
         getActivity().registerReceiver(mNetworkCheck, filter);
     }
 
@@ -96,12 +96,12 @@ public class MoviesFragment extends Fragment {
     }
 
     private void refresh() {
-        refreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+        mRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
                 checkInternet();
                 loadData();
-                refreshLayout.setRefreshing(false);
+                mRefreshLayout.setRefreshing(false);
             }
         });
     }
