@@ -72,8 +72,8 @@ public class DetailsActivity extends AppCompatActivity {
         });
     }
 
-    private ApplicationStaff getApplicationEx() {
-        return (ApplicationStaff) this.getApplication();
+    private NetworkService getApplicationEx() {
+        return (NetworkService) this.getApplication();
     }
 }
 

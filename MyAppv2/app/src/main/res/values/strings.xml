@@ -49,6 +49,7 @@
     <string name="filmDescription_field">Enter film`s description</string>
     <string name="add_newFilm_field">Post new film</string>
     <string name="new_film">Add new film</string>
+    <string name="post_request_failed">Post request failed</string>
 
 
 </resources>

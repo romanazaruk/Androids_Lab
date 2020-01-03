@@ -17,7 +17,7 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.nazaruk.myappv2.AddingFilmActivity;
-import com.nazaruk.myappv2.ApplicationStaff;
+import com.nazaruk.myappv2.NetworkService;
 import com.nazaruk.myappv2.DataApi;
 import com.nazaruk.myappv2.Film;
 import com.nazaruk.myappv2.MoviesListAdapter;
@@ -106,8 +106,8 @@ public class MoviesFragment extends Fragment {
         });
     }
 
-    private ApplicationStaff getApplicationEx() {
-        return (ApplicationStaff) getActivity().getApplication();
+    private NetworkService getApplicationEx() {
+        return (NetworkService) getActivity().getApplication();
     }
 
 }
