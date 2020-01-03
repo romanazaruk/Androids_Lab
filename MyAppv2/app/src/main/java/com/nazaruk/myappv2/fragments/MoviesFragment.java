@@ -1,12 +1,12 @@
 package com.nazaruk.myappv2.fragments;
 
+import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -15,13 +15,16 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
-import com.nazaruk.myappv2.ApplicationStaff;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.nazaruk.myappv2.AddingFilmActivity;
+import com.nazaruk.myappv2.NetworkService;
 import com.nazaruk.myappv2.DataApi;
 import com.nazaruk.myappv2.Film;
+import com.nazaruk.myappv2.MoviesListAdapter;
 import com.nazaruk.myappv2.NetworkCheck;
 import com.nazaruk.myappv2.R;
-import com.nazaruk.myappv2.MoviesListAdapter;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
@@ -30,67 +33,81 @@ import retrofit2.Response;
 
 public class MoviesFragment extends Fragment {
 
-    private SwipeRefreshLayout refreshLayout;
+    private SwipeRefreshLayout mRefreshLayout;
     private RecyclerView recyclerView;
-    private LinearLayout linearLayout;
-    private MoviesListAdapter adapter;
+    private RelativeLayout mRelativeLayout;
+    private MoviesListAdapter mAdapter;
+    private NetworkCheck mNetworkCheck;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.movies_fragment, container, false);
 
-        refreshLayout = (SwipeRefreshLayout) view.findViewById(R.id.swipe);
-        recyclerView = (RecyclerView) view.findViewById(R.id.r_view);
-        linearLayout = view.findViewById(R.id.main_data);
+        mRefreshLayout = view.findViewById(R.id.swipe);
+        recyclerView = view.findViewById(R.id.r_view);
+        mRelativeLayout = view.findViewById(R.id.main_data);
         LinearLayoutManager llm = new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(llm);
         recyclerView.setHasFixedSize(true);
+        mAdapter = new MoviesListAdapter(new ArrayList<>(), getActivity());
+        recyclerView.setAdapter(mAdapter);
+        FloatingActionButton floatingActionButton = view.findViewById(R.id.fab);
+
+        floatingActionButton.setOnClickListener(view1 -> {
+            Intent intent = new Intent(getContext(), AddingFilmActivity.class);
+
+            startActivity(intent);
+        });
 
         loadData();
         refresh();
         checkInternet();
-
         return view;
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        getActivity().unregisterReceiver(mNetworkCheck);
     }
 
     private void checkInternet() {
         IntentFilter filter = new IntentFilter("android.net.conn.CONNECTIVITY_CHANGE");
-        NetworkCheck networkCheck = new NetworkCheck(linearLayout);
-        getActivity().registerReceiver(networkCheck, filter);
+        mNetworkCheck = new NetworkCheck(mRelativeLayout);
+        getActivity().registerReceiver(mNetworkCheck, filter);
     }
 
     private void loadData() {
         final DataApi api = getApplicationEx().getApi();
         final Call<List<Film>> call = api.getFilm();
-        Log.d("My_tag", api.getFilm().toString());
+
         call.enqueue(new Callback<List<Film>>() {
             @Override
             public void onResponse(Call<List<Film>> call,
                                    Response<List<Film>> response) {
-                adapter = new MoviesListAdapter(response.body(), getActivity());
-                recyclerView.setAdapter(adapter);
+                mAdapter.updateFilms(response.body());
             }
 
             @Override
             public void onFailure(Call<List<Film>> call, Throwable t) {
-
+                t.printStackTrace();
             }
         });
     }
 
     private void refresh() {
-        refreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+        mRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
                 checkInternet();
                 loadData();
-                refreshLayout.setRefreshing(false);
+                mRefreshLayout.setRefreshing(false);
             }
         });
     }
 
-    private ApplicationStaff getApplicationEx() {
-        return (ApplicationStaff) getActivity().getApplication();
+    private NetworkService getApplicationEx() {
+        return (NetworkService) getActivity().getApplication();
     }
 
 }

@@ -41,4 +41,15 @@
     <string name="photo">user photo</string>
     <string name="email">email</string>
     <string name="username">username</string>
+
+    <!-- Add new film -->
+    <string name="filmName_field">Enter name of the film</string>
+    <string name="filmAuthor_field">Enter film`s author</string>
+    <string name="filmYear_field">Enter film`s year</string>
+    <string name="filmDescription_field">Enter film`s description</string>
+    <string name="add_newFilm_field">Post new film</string>
+    <string name="new_film">Add new film</string>
+    <string name="post_request_failed">Post request failed</string>
+
+
 </resources>
